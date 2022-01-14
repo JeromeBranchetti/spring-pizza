@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<div th:replace="fragments/resources :: headTags"></div>
+		<title>Pizze</title>
+	</head>
+	<body>
+	<div th:replace="fragments/navbar :: nav"></div>
+		<div class="container">
+			<h1>Pizze Creation</h1>
+			<form 
+			id="pizza-form" 
+			th:object="${pizza}"
+			th:action="@{/pizza/create}"
+			method="post"
+			>
+			<ul>
+				<li th:each="err : ${#fields.allErrors()}" th:text="${err}" class="text-danger"></li>
+			</ul>
+			<div class="row">
+				<div class="col-12">
+					<label class="form-label" for="nome" >Nome</label>
+					<input type="text" class="form-control" id="nome" th:field="*{nome}">
+					<div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
+									<ul>
+										<li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
+									</ul>
+								</div>
+					<label class="form-label" for="prezzo" >Prezzo</label>
+					<input type="number" min=3.00 class="form-control" id="prezzo" th:field="*{prezzo}">
+					<div th:if="${#fields.hasErrors('prezzo')}" class="invalid-feedback">
+									<ul>
+										<li th:each="err : ${#fields.errors('prezzo')}" th:text="${err}"></li>
+									</ul>
+								</div>
+				</div>
+				<div class="col-12">
+					<label class="form-label" for="descrizione"></label>
+					<textarea rows="4" cols="40" class="form-control" id="descrizione" placeholder="Descrivi la pizza che stai creando...." th:field="*{descrizione}"></textarea>
+				</div>
+				
+			</div>
+			<button class="btn btn-primary lg-btn " type="submit" ><i class="fas fa-pizza-slice"></i> Procedi</button>
+			</form>
+		</div>	
+	<div th:replace="fragments/resources :: scripts"></div>
+	</body>
+</html>
