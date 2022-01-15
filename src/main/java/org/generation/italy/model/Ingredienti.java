@@ -22,6 +22,14 @@ public class Ingredienti {
 	@ManyToMany(mappedBy = "ingredienti")
 	List<Pizza> pizze;
 
+	public List<Pizza> getPizza() {
+		return pizze;
+	}
+
+	public void setPizza(List<Pizza> pizze) {
+		this.pizze = pizze;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -30,11 +38,13 @@ public class Ingredienti {
 		this.id = id;
 	}
 
-	public String getName() {
+	public String getIngrediente() {
 		return ingrediente;
 	}
 
-	public void setName(String ingrediente) {
+	public void setIngrediente(String ingrediente) {
 		this.ingrediente = ingrediente;
 	}
+
+	
 }

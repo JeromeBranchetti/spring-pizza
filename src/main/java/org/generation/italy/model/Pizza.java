@@ -20,12 +20,13 @@ public class Pizza {
 	private Integer id;
 	
 	@NotNull
+	@javax.validation.constraints.NotEmpty(message = "Il nome non deve essere vuoto!!")
 	private String nome;
 	
 	@Lob
 	private String descrizione;
 	
-	@NotNull
+	@NotNull(message = "Oh no manca il prezzo!!")
 	private BigDecimal prezzo;
 	
 	@ManyToMany

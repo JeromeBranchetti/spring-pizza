@@ -14,7 +14,7 @@ public class IngredientiService {
 	@Autowired
 	private IngredientiRepository repository;
 	
-	public List<Ingredienti> findAllSortByIngrediente(){
+	public List<Ingredienti> findAllSortByIngredienti(){
 		return repository.findAll(Sort.by("ingrediente"));
 	}
 

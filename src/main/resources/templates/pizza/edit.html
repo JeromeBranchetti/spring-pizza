@@ -1,48 +1,75 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<div th:replace="fragments/resources :: headTags"></div>
-		<title>Pizze</title>
-	</head>
-	<body>
+<head>
+<div th:replace="fragments/resources :: headTags"></div>
+<title>Pizze</title>
+</head>
+<body>
 	<div th:replace="fragments/navbar :: nav"></div>
+	<div class="container">
+		<h1 class="my-3">Pizze Creation</h1>
 		<div class="container">
-			<h1>Pizze Creation</h1>
-			<form 
-			id="pizza-form" 
-			th:object="${pizza}"
-			th:action="@{/pizza/create}"
-			method="post"
-			>
-			<ul>
-				<li th:each="err : ${#fields.allErrors()}" th:text="${err}" class="text-danger"></li>
-			</ul>
-			<div class="row">
-				<div class="col-12">
-					<label class="form-label" for="nome" >Nome</label>
-					<input type="text" class="form-control" id="nome" th:field="*{nome}">
-					<div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
+			<!-- La struttura della mia form per creare una pizza -->
+			<form id="pizza-form" th:object="${pizza}"
+				th:action="${edit} ? @{/pizza/modifica/{id}(id=${pizza.id})} : @{/pizza/create}" 
+				method="post">
+
+				<div class="row">
+					<div class="col-8">
+						<div class="row">
+							<div class="col-12">
+								<label class="form-label" for="nome">Nome</label> <input
+									type="text" class="form-control" id="nome" th:field="*{nome}"
+									th:errorClass="is-invalid">
+								<div th:if="${#fields.hasErrors('nome')}"
+									class="invalid-feedback">
 									<ul>
 										<li th:each="err : ${#fields.errors('nome')}" th:text="${err}"></li>
 									</ul>
 								</div>
-					<label class="form-label" for="prezzo" >Prezzo</label>
-					<input type="number" min=3.00 class="form-control" id="prezzo" th:field="*{prezzo}">
-					<div th:if="${#fields.hasErrors('prezzo')}" class="invalid-feedback">
+								<label class="form-label" for="prezzo">Prezzo</label> <input
+									type="number" min=3.00 class="form-control" id="prezzo"
+									th:field="*{prezzo}" th:errorClass="is-invalid">
+								<div th:if="${#fields.hasErrors('prezzo')}"
+									class="invalid-feedback">
 									<ul>
-										<li th:each="err : ${#fields.errors('prezzo')}" th:text="${err}"></li>
+										<li th:each="err : ${#fields.errors('prezzo')}"
+											th:text="${err}"></li>
 									</ul>
 								</div>
-				</div>
-				<div class="col-12">
-					<label class="form-label" for="descrizione"></label>
-					<textarea rows="4" cols="40" class="form-control" id="descrizione" placeholder="Descrivi la pizza che stai creando...." th:field="*{descrizione}"></textarea>
-				</div>
-				
-			</div>
-			<button class="btn btn-primary lg-btn " type="submit" ><i class="fas fa-pizza-slice"></i> Procedi</button>
+							</div>
+							<div class="col-12">
+								<label class="form-label" for="descrizione"></label>
+								<textarea rows="4" cols="40" class="form-control"
+									id="descrizione"
+									placeholder="Descrivi la pizza che stai creando...."
+									th:field="*{descrizione}"></textarea>
+							</div>
+
+						</div>
+						<button class="btn btn-primary lg-btn mt-3" type="submit">
+							<i class="fas fa-cart-arrow-down"></i> Procedi
+						</button>
+					</div>
+
+					<!-- Ingredienti sotto forma di lista di checkbox-->
+					<div class="col-4">
+						<h4>Scegli Ingredienti</h4>
+						<div class="form-check" th:each="ing : ${listaIngredienti}">
+							<input class="form-check-input" type="checkbox"
+								th:value="${ing.id}" th:field="*{ingredienti}"
+								th:id="|ingrediente_${ing.id}|"> <label
+								class="form-check-label" th:for="|ingrediente_${ing.id}|"
+								th:text="${ing.ingrediente}"></label>
+						</div>
+					</div>
 			</form>
-		</div>	
+		</div>
+	</div>
+	</div>
+
+
+
 	<div th:replace="fragments/resources :: scripts"></div>
-	</body>
+</body>
 </html>

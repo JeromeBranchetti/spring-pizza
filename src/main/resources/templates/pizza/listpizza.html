@@ -24,17 +24,23 @@
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col" class="fs-4">Nome</th>
-					<th scope="col" class="fs-4">Prezzo</th>
 					<th scope="col" class="fs-4">Ingredienti</th>
-					
+					<th scope="col" class="fs-4">Prezzo</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="text-capitalize" th:each="pizza : ${listpizza}">
 					<th scope="row" th:text="${pizzaStat.index + 1}"></th>
 					<td class="fs-5" th:text="${pizza.nome}"></td>
-					<td class="fw-bold fs-5" th:text="|&euro; ${pizza.prezzo}|"></td>
 					<td></td>
+					<td class="fw-bold fs-5" th:text="|&euro; ${pizza.prezzo}|"></td>
+					<td>
+						<a class="btn btn-primary" th:href="@{|/pizza/dettagli/${pizza.id}|}"><i class="far fa-question-circle"></i></a>
+						<a class="btn btn-primary" th:href="@{|/pizza/modifica/${pizza.id}|}"><i class="far fa-edit"></i></a>
+						<a class="btn btn-primary" th:href="@{|/pizza/delete/${pizza.id}|}" onclick="return confirm('Are you sure?')"><i class="fas fa-trash-alt"></i></a>
+						
+					</td>
 				</tr>
 				
 			</tbody>
