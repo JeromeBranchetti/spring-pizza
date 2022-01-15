@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/resources :: headTags"></div>
+<link rel="stylesheet" href="/css/stylesheethome.css">
+<title>Pizze</title>
+</head>
+<body>
+	<header>
+		<div th:replace="fragments/navbar :: nav"></div>
+		<div class="" id="background">
+			<div class="row">
+				<div class="col-12">
+					
+					<div>
+						<h1 class="text-center text-uppercase m-3">ristorante
+							pizzeria</h1>
+						<div class="d-flex justify-content-between" id="presentation">
+
+							<div class="card" style="width: 45%;">
+								<img src="/img/persone.jpg" class="rounded float-start"
+									alt="People inside" id="pres">
+								<div class="card-body">
+									<p class="card-text fs-3 text-center">Il luogo ideale per
+										passare una serata in compagnia, con amici e parenti. Menù
+										adatti a tutte le età.</p>
+								</div>
+							</div>
+
+							<div class="card" style="width: 45%;">
+								<img src="/img/ingredienti.jpg" class="rounded float-end"
+									alt="Ingredients" id="pres">
+								<div class="card-body">
+									<p class="card-text fs-3 text-center">Ingredienti naturali,
+										preparati dai migliori sheff Italiani. Carni allevate a terra
+										e frutta Bio.</p>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+	</header>
+	<footer class="container-fluid bg-dark text-secondary py-2 mb-1">
+		<div class="row d-flex justify-content-evenly" id="whitefoot">
+			<div class="col-4">
+				<span>Qui accanto trovate le nostre info</span>
+				<p>Recapito Telefonico</p>
+				<button class="btn btn-light mx-2"><i class="fas fa-phone-alt"></i></button>
+				<span>987654654</span>
+			</div>
+			<div class="col-4">
+				<span>Social Media</span>
+				<div class="m-3">
+					<button class="btn btn-light mx-2"><i class="fab fa-instagram-square"></i></button>
+					<button class="btn btn-light mx-2"><i class="fab fa-twitter"></i></button>
+					<button class="btn btn-light mx-2"><i class="fab fa-facebook-square"></i></button>
+					<button class="btn btn-light mx-2"><i class="fab fa-youtube"></i></button>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+
+</html>

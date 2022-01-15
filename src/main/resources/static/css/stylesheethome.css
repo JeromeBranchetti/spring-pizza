@@ -1,0 +1,29 @@
+#sfondo1 {
+	z-index: -1;
+	max-width: 100% ;
+	height: auto;
+}
+
+.background {
+	max-width: 100vw;
+}
+
+#presentation {
+	position: relative;
+	margin-top: 20px;
+	max-width: 90%;
+	left: 5%;
+	
+}
+
+#pres {
+	
+	
+	height: 500px
+}
+
+#whitefoot {
+	
+	margin-top:40px;
+	
+}
